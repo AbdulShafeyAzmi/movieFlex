@@ -21,6 +21,7 @@ const MovieDetail = ({ selectedID, onCloseMovie, onAddWatched, watched }) => {
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID === selectedID
   )?.userRating;
+
   const {
     Title: title,
     Poster: poster,
@@ -67,7 +68,7 @@ const MovieDetail = ({ selectedID, onCloseMovie, onAddWatched, watched }) => {
       setIsLoading(true);
       try {
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedID}`
+          `https://www.omdbapi.com/?apikey=${KEY}&i=${selectedID}`
         );
 
         if (!res.ok) {
@@ -75,6 +76,7 @@ const MovieDetail = ({ selectedID, onCloseMovie, onAddWatched, watched }) => {
         }
 
         const data = await res.json();
+        // console.log(data);
         setMovie(data);
       } catch (error) {
         console.error("Error fetching movie details:", error);
