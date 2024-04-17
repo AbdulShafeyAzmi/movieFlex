@@ -21,6 +21,7 @@ const MovieDetail = ({ selectedID, onCloseMovie, onAddWatched, watched }) => {
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID === selectedID
   )?.userRating;
+
   const {
     Title: title,
     Poster: poster,
@@ -75,6 +76,7 @@ const MovieDetail = ({ selectedID, onCloseMovie, onAddWatched, watched }) => {
         }
 
         const data = await res.json();
+        // console.log(data);
         setMovie(data);
       } catch (error) {
         console.error("Error fetching movie details:", error);
